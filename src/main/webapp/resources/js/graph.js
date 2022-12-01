@@ -78,8 +78,9 @@ function drawText(r){
     ctx.fillText('-'+ r,(x/4)-8, y/2-8)
     ctx.restore();
 }
-function redrawGraph(r){
-    console.log("redrawing graph")
+function redrawGraph(){
+    let r = $('.r-text-input').val();
+    console.log("redrawing graph with r = " + r);
     ctx.clearRect(0, 0, x, y);
     ctx.fillStyle = `black`
     drawTriangle();
@@ -136,8 +137,8 @@ $(document).ready(function(){
 });
 
 //redraw graph if R value changed
-$('#r-select').on('change', function() {
-    redrawGraph(this.value);
+$('.r-text-input').on('change', function() {
+    redrawGraph();
 });
 
 function findPos(obj) {

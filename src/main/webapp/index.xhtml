@@ -1,126 +1,43 @@
-<html xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-<meta charset="UTF-8" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
+
 <link rel="icon" href="./resources/img/icon.jpg" />
 <link rel="stylesheet" type="text/css" href="./resources/css/style.css" />
 
+<h:head>
+    <title>Web #3</title>
+</h:head>
 
-<title>Web #3</title>
-
-<table id="main-grid">
-
-<tr>
-    <!-- Header -->
-    <td id="header-plate" colspan="2">
-        <span class="left-aligned">Терновский Илья (P32302)</span>
-        <span class="right-aligned">Вариант 32456</span>
-    </td>
-</tr>
-
-<tr>
-    <!-- Graph -->
-    <td class="content-plate" id="graph-plate">
-        <div class="plate-top">
-            <h2 class="plate-top-title">Координатная плоскость на которую можно нажать</h2>
-        </div>
-        <div class="image-container">
-            <canvas height="300" width="300" id="graph"> </canvas>
-        </div>
-    </td>
-</tr>
-
-<tr>
-    <!-- Values -->
-    <td class="content-plate" id="values-plate">
-        <div class="plate-top">
-            <h2 class="plate-top-title">Значения</h2>
-        </div>
-        <h:form>
-            <table id="input-grid">
-                <!-- X Value -->
-                <tr>
-                    <td class="input-grid-label">
-                        <label>X:</label>
-                    </td>
-                    <td class="input-grid-value x-radio-group" >
-                        <h:selectOneRadio styleClass="centerTable" required="true" id="x-radio" value="0"
-                                          requiredMessage="at least one is requered">
-                            <f:selectItem itemValue="-3" itemLabel="-3" />
-                            <f:selectItem itemValue="-2" itemLabel="-2" />
-                            <f:selectItem itemValue="-1" itemLabel="-1" />
-                            <f:selectItem itemValue="0" itemLabel="0" />
-                            <f:selectItem itemValue="1" itemLabel="1" />
-                            <f:selectItem itemValue="2" itemLabel="2" />
-                            <f:selectItem itemValue="3" itemLabel="3" />
-                            <f:selectItem itemValue="4" itemLabel="4" />
-                            <f:selectItem itemValue="5" itemLabel="5" />
-                        </h:selectOneRadio>
-                    </td>
-                </tr>
-                <tr>
-                    <td/>
-                    <td>
-                        <div class="x-error-box"><h:message for="x-radio"/></div>
-                    </td>
-                </tr>
-                <!-- Y Value -->
-                <tr>
-                    <td class="input-grid-label">
-                        <label for="y-text-input">Y:</label>
-                    </td>
-
-                    <td class="input-grid-value">
-                        <h:inputText id="y-text-input"
-                                     validatorMessage="Y should be in [-5...5]"
-                                     requiredMessage="Y is required"
-                                     required="true" value="0" styleClass="text-input" autocomplete="false">
-                                <f:validateDoubleRange maximum="5" minimum="-5"/>
-                        </h:inputText>
-                    </td>
-                </tr>
-                <tr>
-                    <td/>
-                    <td>
-                        <div class="y-error-box"><h:message for="y-text-input"/></div>
-                    </td>
-                </tr>
-                <!-- R Value -->
-                <tr>
-                    <td class="input-grid-label">
-                        <label for="r-select"> R:</label>
-                    </td>
-                    <td class="input-grid-value">
-                        <h:inputText id="r-text-input"
-                                     validatorMessage="R should be [1...4]"
-                                     requiredMessage="R is required"
-                                     value="0" styleClass="text-input" required="true" autocomplete="false">
-                        <f:validateDoubleRange minimum="1" maximum="4" />
-                        </h:inputText>
-                    </td>
-                </tr>
-                <tr>
-                    <td/>
-                    <td>
-                        <div class="r-error-box"><h:message for="r-text-input"/></div>
-                    </td>
-                </tr>
-                <!-- Buttons -->
-                <tr>
-                    <td colspan="2">
-                        <div class="buttons">
-<!--                            <h:commandButton styleClass="glow-on-hover" id="submit" value="Submit" action="response"/>-->
-                            <button class="glow-on-hover" type="submit" value="Submit">Submit</button>
-                            <button class="glow-on-hover" type="reset" value="Reset" >Reset</button>
+<h:body>
+        <table id="main-grid">
+        <tr>
+            <!-- Header -->
+            <td id="header-plate" colspan="2">
+                <span class="left-aligned">Терновский Илья (P32302)</span>
+                <span class="right-aligned">Вариант 311245</span>
+            </td>
+        </tr>
+            <tr>
+                <td>
+                        <div id="shadowBox">
+                            <h6 class="rainbow rainbow_text_animated" id="Date"> </h6>
                         </div>
-                    </td>
-                </tr>
-                </table>
-        </h:form>
-    </td>
-</tr>
-</table>
+                </td>
+            </tr>
+            <tr>
+                <td class="center-aligned">
+                    <h:button styleClass="bn32" value="To main" action="go-to-main"/>
+                </td>
+            </tr>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<h:outputScript name="js/graph.js"/>
-<h:outputScript name="js/main.js"/>
+        </table>
+
+</h:body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<h:outputScript name="js/clock.js"/>
 </html>
