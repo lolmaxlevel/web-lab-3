@@ -128,6 +128,7 @@ $(document).ready(function(){
         const y = self.find(".y").text().trim();
         const r = self.find(".r").text().trim();
         const hit = self.find(".hit").text().trim() === "true";
+        console.log("x = " + x + " y = " + y + " r = " + r + " hit = " + hit);
         const raw = {x: x, y: y, r: r, hit: hit};
         table[i]=raw;
     });

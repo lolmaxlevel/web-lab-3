@@ -187,12 +187,12 @@ body {
     border-collapse: collapse;
 }
 
-#result-table tr {
-    height: 3em;
+
+.table-row{
+    height: 0em;
     background-color: #605f5f;
     padding: 0 0;
 }
-
 .coords-col {
     width: 12%;
 }
@@ -245,7 +245,7 @@ label {
 }
 
 #result-table tr {
-    height: 3em;
+    height: 2em;
 }
 #shadowBox {
     /* Fallback color */

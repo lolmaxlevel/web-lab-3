@@ -1,6 +1,9 @@
 package com.example.weblab3;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -14,15 +17,19 @@ public class HelloServlet extends HttpServlet {
         // Get a writer pointer
         // to display the successful result
         PrintWriter out = response.getWriter();
+
         out.println("<html><body>");
-        if (request.getSession().getAttribute("username") != null) {
-            out.println("<h1>Hello " + request.getSession().getAttribute("username") + "</h1>");
-        } else {
-            out.println("<h1>Hello</h1>");
+        String url = "jdbc:postgresql://localhost:5432/test";
+        String username = "postgres";
+        String password = "admin";
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            out.println("Connection successful!");
+        } catch (SQLException e) {
+            out.println("Connection failed!"+e.getMessage());
+            e.printStackTrace();
         }
         out.println("</body></html>");
     }
-
     //if the user is not logged in, redirect to the login page
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("login.html");
