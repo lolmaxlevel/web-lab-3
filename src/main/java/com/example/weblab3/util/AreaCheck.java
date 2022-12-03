@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Named("areaCheck")
 public class AreaCheck implements Serializable {
+
     {
         System.out.println("AreaCheckImpl created");
     }

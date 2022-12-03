@@ -97,6 +97,10 @@ function drawDots(){
         }))
     }
 }
+tb = document.getElementById("result-table")
+function checkTable(){
+    if (tb.)
+}
 function drawLineFromTo(x1,y1,x2,y2){
     ctx.save();
     ctx.moveTo(x1,y1);
@@ -142,6 +146,12 @@ $('.r-text-input').on('change', function() {
     redrawGraph();
 });
 
+//redraw graph when table changes
+const table2 = document.querySelector('#result-table');
+table2.on('change', function () {    // 'change' event is fired when a cell is edited
+    redrawGraph();
+    console.log("table changed");
+});
 function findPos(obj) {
     let curleft = 0, curtop = 0;
     if (obj.offsetParent) {

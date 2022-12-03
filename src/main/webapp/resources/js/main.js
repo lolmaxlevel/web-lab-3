@@ -1,10 +1,11 @@
 
 //send request if clicked on graph
 canvas.onmousedown = function (e) {
+    console.log("clicked on graph");
     let pos = findPos(this);
     let graph_x = e.pageX - pos.x;
     let graph_y = e.pageY - pos.y;
-    let r_val = document.getElementById('r-select').value
+    let r_val = document.getElementsByClassName('r-text-input').item(0).value;
     let normalized_x = (graph_x-(x/2)) / (x/2) * r_val;
     let normalized_y = -(graph_y-(y/2)) / (y/2) * r_val;
     addAttempt(
@@ -19,10 +20,10 @@ canvas.onmousedown = function (e) {
             },
             {
                 name: "r",
-                value: rValue.toString()
+                value: r_val.toString()
             }
         ]
     )
-
     redrawGraph();
 };
+
