@@ -138,7 +138,7 @@
                         <h:inputText id="r-text-input"
                                      validatorMessage="R should be in [1...4]"
                                      requiredMessage="R is required"
-                                     value="#{attemptBean.r}" styleClass="r-text-input" required="true"
+                                     value="#{attemptBean.r}" class="r-text-input" required="true"
                                      autocomplete="false" maxlength="1">
                         <f:validateDoubleRange minimum="1" maximum="4" />
                         </h:inputText>
@@ -156,11 +156,11 @@
                         <div class="buttons">
                             <p:commandButton styleClass="glow-on-hover" ajax="true" id="submit" value="Submit"
                                              action="#{attemptsRepository.addAttempt(attemptBean)}"
-                                             update="@form result-table" oncomplete="redrawGraph()"/>
+                                             update="result-table" oncomplete="redrawGraph()"/>
 
                             <p:commandButton styleClass="glow-on-hover" ajax="true" id="reset" value="Reset"
                                              action="#{attemptsRepository.clearAttempts()}"
-                                             update="@form result-table" oncomplete="redrawGraph()"/>
+                                             update="result-table" oncomplete="redrawGraph()"/>
                         </div>
                     </td>
                 </tr>

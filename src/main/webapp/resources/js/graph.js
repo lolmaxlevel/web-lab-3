@@ -136,6 +136,7 @@ function getDots(){
 }
 //redraw graph if R value changed
 $('.r-text-input').on('change', function() {
+    console.log("R value changed");
     redrawGraph();
 });
 

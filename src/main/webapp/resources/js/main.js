@@ -4,7 +4,7 @@ canvas.onmousedown = function (e) {
     let pos = findPos(this);
     let graph_x = e.pageX - pos.x;
     let graph_y = e.pageY - pos.y;
-    let r_val = document.getElementsByClassName('r-text-input').item(0).value;
+    let r_val = $('.r-text-input').val();
     let normalized_x = (graph_x-(x/2)) / (x/2) * r_val;
     let normalized_y = -(graph_y-(y/2)) / (y/2) * r_val;
     addAttempt(
