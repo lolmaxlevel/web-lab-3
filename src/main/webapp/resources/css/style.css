@@ -77,8 +77,8 @@ body {
 }
 .r-error-box {
     background-color: #e74c3c;
-    margin: -2% auto auto auto;
-    width: 75%;
+    margin: -2.5% auto auto auto;
+    width: 74%;
     height: 20px;
     border-radius:4px;
     font-size:16px;
@@ -89,8 +89,8 @@ body {
 }
 .y-error-box {
     background-color: #e74c3c;
-    margin: -2% auto auto auto;
-    width: 75%;
+    margin: -2.5% auto auto auto;
+    width: 74%;
     height: 20px;
     border-radius:4px;
     font-size:16px;
@@ -187,12 +187,12 @@ body {
     border-collapse: collapse;
 }
 
-#result-table tr {
-    height: 3em;
+
+.table-row{
+    height: 0em;
     background-color: #605f5f;
     padding: 0 0;
 }
-
 .coords-col {
     width: 12%;
 }
@@ -215,11 +215,11 @@ input[type=checkbox] {
 label {
     display: inline-block;
 }
-.red{
-    color: #da2d2d;
+.false{
+    color: rgb(196, 20, 20);
 }
-.green{
-    color: #1bf110;
+.true{
+    color: rgb(11, 203, 15);
 }
 
 .centerTable { margin: 0 auto; }
@@ -245,7 +245,7 @@ label {
 }
 
 #result-table tr {
-    height: 3em;
+    height: 2em;
 }
 #shadowBox {
     /* Fallback color */
