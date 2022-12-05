@@ -1,7 +1,6 @@
 
 //send request if clicked on graph
 canvas.onmousedown = function (e) {
-    console.log("clicked on graph");
     let pos = findPos(this);
     let graph_x = e.pageX - pos.x;
     let graph_y = e.pageY - pos.y;
@@ -24,6 +23,15 @@ canvas.onmousedown = function (e) {
             }
         ]
     )
-    redrawGraph();
 };
-
+function findPos(obj) {
+    let curleft = 0, curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curleft += obj.offsetLeft;
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+        return { x: curleft, y: curtop };
+    }
+    return undefined;
+}

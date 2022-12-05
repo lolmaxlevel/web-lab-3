@@ -6,23 +6,19 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 
+
 import java.util.Date;
 
 
 @Named("areaCheck")
 public class AreaCheck implements Serializable {
 
-    {
-        System.out.println("AreaCheckImpl created");
-    }
-
     public static void checkHit(AttemptBean attemptBean) {
         long startTime = System.nanoTime();
-        attemptBean.setAttemptTime(new Date(System.currentTimeMillis()));
-
+        attemptBean.setAttemptTime(new Date());
         boolean hit = attemptIsInArea(attemptBean);
         attemptBean.setHit(hit);
-        attemptBean.setProcessTime(System.nanoTime() - startTime);
+        attemptBean.setProcessTime(System.nanoTime()-startTime);
     }
 
     private static boolean attemptIsInArea(AttemptBean attemptBean) {

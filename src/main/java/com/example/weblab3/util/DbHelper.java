@@ -13,8 +13,11 @@ public class DbHelper {
     }
     public static Session getSession() {
         if (sessionFactory.isOpen())
+
             return sessionFactory.getCurrentSession();
-        else
+        else{
+            System.out.println("DB session created");
             return sessionFactory.openSession();
+        }
     }
 }

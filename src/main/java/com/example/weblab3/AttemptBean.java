@@ -34,8 +34,7 @@ public class AttemptBean implements Serializable {
     @Column(name = "attempt_time")
     private Date attemptTime;
     @Transient
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
 
     public AttemptBean() {
     }
@@ -45,15 +44,6 @@ public class AttemptBean implements Serializable {
         this.y = y;
         this.r = r;
     }
-
-    public AttemptBean(int i, int i1, int i2, int i3, boolean b, int i4) {
-        this.x = i1;
-        this.y = i2;
-        this.r = i3;
-        this.hit = b;
-        this.processTime = (long) i4;
-    }
-
 
     @Override
     public boolean equals(Object o) {

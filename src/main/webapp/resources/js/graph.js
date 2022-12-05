@@ -88,81 +88,56 @@ function redrawGraph(){
     drawRectangle();
     drawAxes();
     drawText(r);
+    getDots()
     drawDots();
 }
 function drawDots(){
-    if (table.length!==0){
-        table.forEach((dot=>{
-            drawDotOnGraph(dot.x/dot.r*(x/2)+(x/2), -dot.y/dot.r*(y/2)+(y/2), dot.hit)
+    if (table.length!==0) {
+        table.forEach((dot => {
+            drawDotOnGraph(dot.x / dot.r * (x / 2) + (x / 2), -dot.y / dot.r * (y / 2) + (y / 2), dot.hit)
         }))
     }
 }
-tb = document.getElementById("result-table")
-function checkTable(){
-    if (tb.)
-}
+
 function drawLineFromTo(x1,y1,x2,y2){
-    ctx.save();
+    ctx.beginPath();
     ctx.moveTo(x1,y1);
     ctx.lineTo(x2,y2);
     ctx.stroke();
-    ctx.restore();
 }
 function drawDotOnGraph(x, y, isHit){
-    ctx.save();
     ctx.beginPath();
     ctx.arc(x, y, 3, 0, 2 * Math.PI, false);
     ctx.fillStyle = isHit? 'green': 'red';
     ctx.fill();
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 1.5;
     ctx.strokeStyle = isHit? '#003300': '#450100';
     ctx.stroke();
     ctx.strokeStyle = 'black'
     ctx.lineWidth = 1.5;
-    ctx.restore();
 }
 
 //draw stored points
 $(document).ready(function(){
+    redrawGraph();
+});
+
+function getDots(){
     table = [];
-    let rValue = "0";
     $("#result-table>tbody tr").each(function (i) {
         const self = $(this);
         const x = self.find(".x").text().trim();
         const y = self.find(".y").text().trim();
         const r = self.find(".r").text().trim();
         const hit = self.find(".hit").text().trim() === "true";
-        console.log("x = " + x + " y = " + y + " r = " + r + " hit = " + hit);
         const raw = {x: x, y: y, r: r, hit: hit};
         table[i]=raw;
     });
-    if(table.length>0) rValue = table[table.length-1].r
-    redrawGraph(rValue)
-    $('#r-select').val(parseFloat(rValue)).change();
-});
-
+}
 //redraw graph if R value changed
 $('.r-text-input').on('change', function() {
     redrawGraph();
 });
-
-//redraw graph when table changes
-const table2 = document.querySelector('#result-table');
-table2.on('change', function () {    // 'change' event is fired when a cell is edited
-    redrawGraph();
-    console.log("table changed");
-});
-function findPos(obj) {
-    let curleft = 0, curtop = 0;
-    if (obj.offsetParent) {
-        do {
-            curleft += obj.offsetLeft;
-            curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-        return { x: curleft, y: curtop };
-    }
-    return undefined;
-}
 
 //reload page if accessed by back/forward buttons
 if(!!window.performance && window.performance.getEntriesByType('navigation')[0].type === "back_forward")
