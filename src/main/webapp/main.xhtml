@@ -115,18 +115,19 @@
                     </td>
 
                     <td class="input-grid-value">
-                        <h:inputText id="y-text-input"
+                        <p:inputText id="y-text-input"
                                      validatorMessage="Y should be in [-5...5]"
                                      requiredMessage="Y is required"
                                      required="true" value="#{attemptBean.y}" styleClass="text-input" autocomplete="false">
                                 <f:validateDoubleRange maximum="5" minimum="-5"/>
-                        </h:inputText>
+                            <p:clientValidator event="change" />
+                        </p:inputText>
                     </td>
                 </tr>
                 <tr>
                     <td/>
                     <td>
-                        <div class="y-error-box"><h:message for="y-text-input"/></div>
+                        <div class="y-error-box"><p:message  display="text" for="y-text-input"/></div>
                     </td>
                 </tr>
                 <!-- R Value -->
@@ -135,19 +136,20 @@
                         <label for="r-text-input"> R:</label>
                     </td>
                     <td class="input-grid-value">
-                        <h:inputText id="r-text-input"
+                        <p:inputText id="r-text-input"
                                      validatorMessage="R should be in [1...4]"
                                      requiredMessage="R is required"
                                      value="#{attemptBean.r}" class="r-text-input" required="true"
                                      autocomplete="false" maxlength="1">
-                        <f:validateDoubleRange minimum="1" maximum="4" />
-                        </h:inputText>
+                            <f:validateDoubleRange minimum="1" maximum="4" />
+                            <p:clientValidator event="change" />
+                        </p:inputText>
                     </td>
                 </tr>
                 <tr>
                     <td/>
                     <td>
-                        <div class="r-error-box"><h:message for="r-text-input"/></div>
+                        <div class="r-error-box"><p:message display="text" for="r-text-input"/></div>
                     </td>
                 </tr>
                 <!-- Buttons -->

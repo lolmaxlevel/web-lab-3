@@ -55,50 +55,40 @@ body {
 }
 .text-input {
     width: 75%;
-    height: 20px;
+    height: 25px;
     margin: 2% 0;
 }
 .r-text-input {
     width: 75%;
-    height: 20px;
+    height: 25px;
     margin: 2% 0;
 }
 .x-error-box {
-    background-color: #e74c3c;
-    margin: auto auto auto auto;
-    width: 75%;
+    margin: -1% auto auto auto;
+    width: 76%;
     height: 20px;
-    border-radius:4px;
     font-size:16px;
     padding:5px;
 }
-.x-error-box:empty {
-    display: none;
-}
+
+
 .r-error-box {
-    background-color: #e74c3c;
-    margin: -2.5% auto auto auto;
-    width: 74%;
+    margin: -1% auto auto auto;
+    width: 76%;
     height: 20px;
-    border-radius:4px;
     font-size:16px;
     padding:5px;
 }
-.r-error-box:empty {
-    display: none;
-}
+
+
 .y-error-box {
-    background-color: #e74c3c;
-    margin: -2.5% auto auto auto;
-    width: 74%;
+    margin: -1% auto auto auto;
+    width: 76%;
     height: 20px;
-    border-radius:4px;
     font-size:16px;
     padding:5px;
 }
-.y-error-box:empty {
-    display: none;
-}
+
 
 .buttons {
     margin-top: 1%;
