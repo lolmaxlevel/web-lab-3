@@ -24,7 +24,12 @@ public class HibernateWorker implements Serializable {
     public List<AttemptEntity> getAttemptsList(int start , int count) {
         Session session = DbHelper.getSession();
         session.beginTransaction();
-        List<AttemptEntity> data = session.createQuery("From AttemptEntity ").setFirstResult(start).setMaxResults(count).list();
+        List<AttemptEntity> data;
+        if (start <= 0) {
+            data = session.createQuery("From AttemptEntity ").list();
+        } else {
+            data = session.createQuery("From AttemptEntity ").setFirstResult(start).setMaxResults(count).list();
+        }
         session.getTransaction().commit();
         return data;
     }
