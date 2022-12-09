@@ -34,7 +34,8 @@
             <h2 class="plate-top-title">Результат</h2>
         </div>
         <div class="scroll-container">
-            <h:dataTable id="result-table" value = "#{attemptsRepository.attemptsList}" var = "attempt"
+            <h:dataTable id="result-table"
+                         value = "#{attemptsRepository.getAttemptsList(paginatorBean.from,paginatorBean.count)}" var = "attempt"
                          styleClass = "jopastyle"
                          headerClass = "jopaheader"
                          rowClasses = "table-row">
@@ -163,6 +164,15 @@
                             <p:commandButton styleClass="glow-on-hover" ajax="true" id="reset" value="Reset"
                                              action="#{attemptsRepository.clearAttempts()}"
                                              update="result-table" oncomplete="redrawGraph()"/>
+                            <p:inputText id="paginator1"
+                                         value="#{paginatorBean.from}" styleClass="text-input" autocomplete="false">
+                                <p:ajax event="change" update="result-table" oncomplete="redrawGraph()"/>
+                            </p:inputText>
+                            <p:inputText id="paginator2"
+                                         value="#{paginatorBean.count}"
+                                         styleClass="text-input" autocomplete="false" >
+                                <p:ajax event="change" update="result-table" oncomplete="redrawGraph()"/>
+                            </p:inputText>
                         </div>
                     </td>
                 </tr>

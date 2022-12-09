@@ -36,10 +36,7 @@ public class AreaCheck implements Serializable {
         double x = attemptEntity.getX();
         double y = attemptEntity.getY();
         int r = attemptEntity.getR();
-        double a = 0 - (-r/2.0 - 0) * (0 - y);
-        double b = (-r/2.0 - x) * (-r) - (0 - (-r/2.0)) * (0 - y);
-        double c = (-x) * (-(-r)) - (0) * (-r - y);
-        return ((a>=0 && b>=0 && c>=0) || (a<=0 && b<=0 && c<=0));
+        return (x<=0 && y<=0 && x*x+y*y<=r/2.0*r/2.0);
     }
 
     private static boolean attemptIsInTriangle(AttemptEntity attemptEntity) {

@@ -1,14 +1,13 @@
-package com.example.weblab3;
+package com.example.weblab3.lazy;
 
+import com.example.weblab3.AttemptBean;
+import com.example.weblab3.AttemptEntity;
 import com.example.weblab3.util.AreaCheck;
 import com.example.weblab3.util.DbHelper;
-
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -18,10 +17,11 @@ import java.util.Map;
 
 @ManagedBean
 @SessionScoped
-@Named("attemptsRepository")
-public class HibernateWorker implements Serializable {
+@Named("attemptsRepositoryWithPagination")
+public class HibernateWorkerWithPagination implements Serializable {
 
     public List<AttemptEntity> getAttemptsList(int start , int count) {
+        System.out.println("getAttemptsList");
         Session session = DbHelper.getSession();
         session.beginTransaction();
         List<AttemptEntity> data = session.createQuery("From AttemptEntity ").setFirstResult(start).setMaxResults(count).list();
@@ -56,8 +56,8 @@ public class HibernateWorker implements Serializable {
         try {
             double xCoordinate = Double.parseDouble(params.get("x"));
             double yCoordinate = Double.parseDouble(params.get("y"));
-            xCoordinate = Math.round(xCoordinate * 100)/100.0;
-            yCoordinate = Math.round(yCoordinate * 100)/100.0;
+            xCoordinate = Math.round(xCoordinate * 100) / 100.0;
+            yCoordinate = Math.round(yCoordinate * 100) / 100.0;
             int graphR = Integer.parseInt(params.get("r"));
             final AttemptBean attemptBean = new AttemptBean(
                     xCoordinate,
@@ -70,4 +70,11 @@ public class HibernateWorker implements Serializable {
         }
     }
 
+    public int getAttemptsCount() {
+        Session session = DbHelper.getSession();
+        session.beginTransaction();
+        int count = session.createQuery("select count(*) from AttemptEntity ", Number.class).getSingleResult().intValue();
+        session.getTransaction().commit();
+        return count;
+    }
 }

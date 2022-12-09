@@ -163,14 +163,6 @@ body {
     position: relative;
 }
 
-.scroll-container {
-    position: absolute;
-    bottom: 0;
-    top: -20px;
-    width: 100%;
-    overflow-y: auto;
-}
-
 #result-table {
     width: 100%;
     text-align: center;
