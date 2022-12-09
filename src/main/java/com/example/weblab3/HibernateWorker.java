@@ -5,6 +5,8 @@ import com.example.weblab3.util.DbHelper;
 
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -15,21 +17,24 @@ import java.util.Map;
 
 @Named("attemptsRepository")
 public class HibernateWorker implements Serializable {
+    @PersistenceContext
+    EntityManager entityManager;
 
-    public List<AttemptBean> getAttemptsList() {
+    public List<AttemptEntity> getAttemptsList() {
         Session session = DbHelper.getSession();
         session.beginTransaction();
-        List<AttemptBean> data = session.createQuery("From AttemptBean ").list();
+        List<AttemptEntity> data = session.createQuery("From AttemptEntity ").list();
         session.getTransaction().commit();
         return data;
     }
 
     public void addAttempt(AttemptBean attemptBean) {
-        AreaCheck.checkHit(attemptBean);
-        System.out.println("addAttempt"+attemptBean);
+        AttemptEntity attemptEntity = attemptBean.createEntity();
+        AreaCheck.checkHit(attemptEntity);
+        System.out.println("addAttempt"+attemptEntity);
         Session session = DbHelper.getSession();
         session.beginTransaction();
-        session.save(attemptBean);
+        session.save(attemptEntity);
         session.getTransaction().commit();
     }
 
@@ -37,7 +42,7 @@ public class HibernateWorker implements Serializable {
         Session session = DbHelper.getSession();
         session.beginTransaction();
         System.out.println("clearing table");
-        String hql = String.format("delete from %s", AttemptBean.class.getName());
+        String hql = String.format("delete from %s", AttemptEntity.class.getName());
         Query query = session.createQuery(hql);
         query.executeUpdate();
         session.getTransaction().commit();
