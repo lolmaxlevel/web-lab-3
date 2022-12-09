@@ -3,6 +3,8 @@ package com.example.weblab3;
 import com.example.weblab3.util.AreaCheck;
 import com.example.weblab3.util.DbHelper;
 
+import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
@@ -14,7 +16,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-
+@ManagedBean
+@SessionScoped
 @Named("attemptsRepository")
 public class HibernateWorker implements Serializable {
     @PersistenceContext

@@ -68,7 +68,7 @@ function drawText(r){
     ctx.save();
     ctx.font = '15px monospace';
     ctx.fillStyle = `black`;
-    if (r<=0){
+    if (r<=0 || isNaN(parseInt(r))){
         r = "R/2";
     }
     else r = (r/2).toString();
