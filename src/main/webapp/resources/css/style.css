@@ -287,3 +287,6 @@ label {
 .center-aligned {
     text-align: center;
 }
+.outer {
+    margin: 0 auto;
+}
